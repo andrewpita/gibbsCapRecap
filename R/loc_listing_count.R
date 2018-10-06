@@ -1,6 +1,4 @@
 
-library(dplyr)
-
 #' Extract Number of participating individuals.
 #' 
 #' @description Take regionaldata.csv file and get counts for 
