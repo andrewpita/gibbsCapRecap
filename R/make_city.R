@@ -9,6 +9,10 @@
 #' 
 
 
+#in our analysis we  specifically used the median of the posterior distribution approximated using the 
+#gibbs sampler.  Thus for df we use a named vector of the median estimates for each of the parameters.
+#the last two characters of the parameter names correspond to a specific location
+
 make_city = function(string, df) {
   
   indeces = grepl(paste(string,"$", sep = ""), names(df))
@@ -18,4 +22,6 @@ make_city = function(string, df) {
   return(city)
   
 }
+
+
 
