@@ -2,7 +2,7 @@
 % Please edit documentation in R/gibbs_jeffrey.R
 \name{gibbs_jeffreys}
 \alias{gibbs_jeffreys}
-\title{Runs a gibbs sampler chain to estimate our model parameters}
+\title{Runs a gibbs sampler chain with Jeffreys prior on N to estimate our model parameters}
 \usage{
 gibbs_jeffreys(seed, N = 10000, inclusionProbPriors)
 }

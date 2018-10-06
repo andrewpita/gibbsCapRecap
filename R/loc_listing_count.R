@@ -11,6 +11,7 @@
 #' @return a numeric object
 #' 
 #' @import dplyr
+#' @export
 
 
 #function for extracting the number of individuals who participated 

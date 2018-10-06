@@ -10,6 +10,8 @@
 #' @return a numeric object
 #' 
 #' @import dplyr
+#' 
+#' @export
 
 
 #in this specific case the survey is the most complete source of data, 

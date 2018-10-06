@@ -1,4 +1,4 @@
-#' Runs a gibbs sampler chain to estimate our model parameters
+#' Runs a gibbs sampler chain with Jeffreys prior on N to estimate our model parameters
 #' 
 #' @description Requires that parameters be declared globally, and note they are 
 #' @description hardcoded for this analysis
@@ -10,6 +10,8 @@
 #' @return a numeric matrix
 #' 
 #' @import BiasedUrn
+#' 
+#' @export
 
 
 

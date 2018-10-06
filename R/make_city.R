@@ -7,6 +7,7 @@
 #' 
 #' @return a numeric vector
 #' 
+#' @export
 
 
 #in our analysis we  specifically used the median of the posterior distribution approximated using the 
