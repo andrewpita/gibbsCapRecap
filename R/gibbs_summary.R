@@ -3,6 +3,9 @@
 #' @description  creates a trace plot for posterior draws
 #' 
 #' @param x column of posterior draws for a parameter
+#' 
+#' @importFrom stats quantile median sd
+#' 
 #' @export
 #' 
 #'

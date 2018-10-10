@@ -5,7 +5,7 @@
 \title{Runs a gibbs sampler chain with a Binomial prior on N to estimate our model parameters}
 \usage{
 gibbs_binomial(seed, N = 10000, atune = 0.25, btune = 1,
-  inclusionProbPrios)
+  inclusionProbPriors)
 }
 \arguments{
 \item{seed}{a seed}

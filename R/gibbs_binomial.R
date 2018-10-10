@@ -14,15 +14,16 @@
 #' 
 #' @return a numeric matrix
 #' 
-#' @import BiasedUrn
-#' @import truncnorm
+#' @importFrom BiasedUrn rFNCHypergeo
+#' @importFrom stats rnbinom rbeta rhyper runif rbinom dbeta
+#' @importFrom truncnorm rtruncnorm
 #' 
 #' @export
 
 
 
 gibbs_binomial = function(seed, N = 10000, atune = 0.25,
-                          btune = 1, inclusionProbPrios) {
+                          btune = 1, inclusionProbPriors) {
   
   print(seed)
   M=matrix(0,N,length(parnames)) ## stores MCMC samples 

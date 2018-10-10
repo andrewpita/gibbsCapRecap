@@ -3,13 +3,14 @@
 #' @description Take overlapdata.csv file and get counts for 
 #' @description individuals who participated in multiple listings.
 #' 
-#' @param survData csv file in the format of overlapdata.csv.
+#' @param overlapData csv file in the format of overlapdata.csv.
 #' @param survLoc character object with the corresponding location name in overlapdata.csv.
 #' @param listing character object with the corresponding listing name in overlapdata.csv
 #' 
 #' @return a numeric object
 #' 
 #' @import dplyr
+#' @importFrom magrittr %>%
 #' 
 #' @export
 

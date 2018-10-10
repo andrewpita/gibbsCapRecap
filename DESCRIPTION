@@ -7,6 +7,15 @@ Maintainer: <apita3@jhmi.edu>
 Description: Functions for extracting data and running the gibbs sampler chain
 License: MIT License
 Encoding: UTF-8
+LazyData: true
 Imports:
-	dplyr
+	dplyr,
+	BiasedUrn,
+	truncnorm,
+	grDevices,
+	graphics,
+	stats,
+	stringr,
+	hash,
+	magrittr
 RoxygenNote: 6.0.1

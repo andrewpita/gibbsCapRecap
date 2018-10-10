@@ -11,7 +11,7 @@ overlap_count(survLoc, listing, overlapData)
 
 \item{listing}{character object with the corresponding listing name in overlapdata.csv}
 
-\item{survData}{csv file in the format of overlapdata.csv.}
+\item{overlapData}{csv file in the format of overlapdata.csv.}
 }
 \value{
 a numeric object

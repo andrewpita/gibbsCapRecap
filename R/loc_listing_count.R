@@ -11,6 +11,8 @@
 #' @return a numeric object
 #' 
 #' @import dplyr
+#' @importFrom magrittr %>%
+#' 
 #' @export
 
 

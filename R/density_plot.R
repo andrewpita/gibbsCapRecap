@@ -5,6 +5,10 @@
 #' @param col column that contains the parameter posterior draws
 #' @param Mlist list that contains posterior draws from several gibbs sampler runs
 #' 
+#' @importFrom stats density
+#' @importFrom grDevices png dev.off
+#' @importFrom graphics plot lines
+#' @importFrom stringr str_sub str_replace_all
 #' 
 #' @export
 

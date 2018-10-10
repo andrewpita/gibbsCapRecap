@@ -9,7 +9,8 @@
 #' 
 #' @return a numeric matrix
 #' 
-#' @import BiasedUrn
+#' @importFrom BiasedUrn rFNCHypergeo
+#' @importFrom stats rnbinom rbeta rhyper
 #' 
 #' @export
 
@@ -21,7 +22,7 @@
 #but my hope is that the documentation is good enough that someone could 
 #easily adapt the model to their own purposes. 
 
-gibbs_jeffreys = function(seed, N = 10000, inclusionProbPriors) {
+gibbs_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
   
   print(seed)
   M=matrix(0,N,length(parnames)) ## stores MCMC samples 
