@@ -9,8 +9,6 @@
 #' 
 #' @return a numeric object
 #' 
-#' @import dplyr
-#' @importFrom magrittr %>%
 #' 
 #' @export
 
@@ -20,27 +18,12 @@
 #other types of listings: a  uid, coupon, or rnb
 overlap_count = function(survLoc, listing, overlapData) {
   
-  if (listing == "uid") {
-    
-    overlapCount = overlapData %>%
-                filter(location == survLoc, uid == "Yes") %>%
-                                summarise(n = sum(n)) %>%
-                                          pull
-  }
+    ind = overlapData[,"location"] == survLoc & overlapData[,listing] == "Yes"
+    ind = ifelse(is.na(ind), FALSE, ind)
   
-  else if (listing == "coupon") {
+    overlapCount = sum(overlapData$n[ind])
     
-    overlapCount = overlapData %>% 
-                filter(location == survLoc, coupon == "Yes") %>%
-                                summarise(n = sum(n)) %>%
-                                          pull
-  }
-  
-  else {
     
-    overlapCount = overlapData %>% 
-                filter(location == survLoc, rainbow == "Yes") %>%
-                                summarise(n = sum(n)) %>%
-                                          pull
-  }
+    return(overlapCount)
 }
+
