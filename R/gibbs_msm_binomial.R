@@ -4,7 +4,7 @@
 #' @description hardcoded for this analysis
 #' 
 #' @param seed a seed
-#' @param N number of iterations for the gibbs sampler
+#' @param N number of iterations for the gibbs sampler, default is 10,000
 #' @param inclusionProbPriors priors for the inclusion probabilities of participating in each listing. should be present in a configureation file. 
 #' @param atune Tuning parameter for the metropolis-hastings update of hyperparameters on phis
 #' @param btune Other tuning parameter for the metropolis-hastings update
@@ -22,7 +22,7 @@
 
 
 
-gibbs_binomial = function(seed, N = 10000, atune = 0.25,
+gibbs_msm_binomial = function(seed, N = 10000, atune = 0.25,
                           btune = 1, inclusionProbPriors) {
   
   print(seed)
@@ -92,7 +92,7 @@ gibbs_binomial = function(seed, N = 10000, atune = 0.25,
     
     #### updating coupon distribution in the corridor ####
     N.cpn.ME=N.srv.cpn.ME+ov.ME+rFNCHypergeo(1,N.ME-N.srv.ME-N.uid.ME+N.srv.uid.ME,
-                                             N.MM-N.srv.MM-N.uid.MM+N.srv.uid.MM,N.cpn.Co-N.srv.cpn.ME-ov.ME-N.srv.cpn.MM-ov.MM,
+                              N.MM-N.srv.MM-N.uid.MM+N.srv.uid.MM,N.cpn.Co-N.srv.cpn.ME-ov.ME-N.srv.cpn.MM-ov.MM,
                                              (p.cpn.ME/(1-p.cpn.ME))/(p.cpn.MM/(1-p.cpn.MM)))
     N.cpn.MM=N.cpn.Co-N.cpn.ME
     

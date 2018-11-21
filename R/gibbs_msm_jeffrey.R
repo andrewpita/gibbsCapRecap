@@ -4,7 +4,7 @@
 #' @description hardcoded for this analysis
 #' 
 #' @param seed a seed
-#' @param N number of iterations for the gibbs sampler
+#' @param N number of iterations for the gibbs sampler, default is 10,000
 #' @param inclusionProbPriors priors for the inclusion probabilities of participating in each listing. should be present in a configureation file. 
 #' 
 #' @return a numeric matrix
@@ -22,7 +22,7 @@
 #but my hope is that the documentation is good enough that someone could 
 #easily adapt the model to their own purposes. 
 
-gibbs_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
+gibbs_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
   
   print(seed)
   M=matrix(0,N,length(parnames)) ## stores MCMC samples 

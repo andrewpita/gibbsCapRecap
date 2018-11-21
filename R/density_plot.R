@@ -20,7 +20,7 @@ density_plot=function(col,Mlist){
   png(imagename)
   plot(density(Mlist[[1]][,col]),type="l",
        main=loc_hash[[str_sub(col,-2)]],xlab="x",ylab="")
-  lines(density(Mlist[[2]][-(1:Nburn),col]),col="red")
-  lines(density(Mlist[[3]][-(1:Nburn),col]),col="green")
+  lines(density(Mlist[[2]][,col]),col="red")
+  lines(density(Mlist[[3]][,col]),col="green")
   dev.off()
 }
