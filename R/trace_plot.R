@@ -13,7 +13,6 @@
 
 trace_plot=function(col,Mlist){
   
-  dir.create("results/traceplots")
   colname=str_replace_all(col,"[.]","_")
   imagename=paste0("results/traceplots/",colname,".png")
   png(imagename)

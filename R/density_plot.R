@@ -14,7 +14,6 @@
 
 density_plot=function(col,Mlist){
 
-  dir.create("results/densityplots")
   colname=str_replace_all(col,"[.]","_")
   imagename=paste0("results/densityplots/",colname,".png")
   png(imagename)
