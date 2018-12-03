@@ -84,7 +84,7 @@ sim_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
                             true.p.srv.MM * true.p.uid.MM * (1 - true.p.cpn.MM),#[2] in survey and uid
                             true.p.srv.MM * true.p.uid.MM * true.p.cpn.MM,#[3] in all three
                             true.p.uid.MM * (1 - true.p.srv.MM) * (1 - true.p.cpn.MM),#[4] in only uid
-                            true.p.uid.MM * (1 - true.p.srv.MM) * true.cpn.MM,#[5] in only uid and coupon
+                            true.p.uid.MM * (1 - true.p.srv.MM) * true.p.cpn.MM,#[5] in only uid and coupon
                             true.p.cpn.MM * (1 - true.p.srv.MM) * (1 - true.p.uid.MM),#[6] in only coupon
                             true.p.cpn.MM * true.p.srv.MM * (1 - true.p.uid.MM),#[7] in coupon and survey
                             (1 - true.p.cpn.MM) * (1 - true.p.srv.MM) * (1 - true.p.uid.MM)#[8] in none
