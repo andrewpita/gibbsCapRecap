@@ -42,7 +42,7 @@ sim_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
                            true.p.uid.Nh * (1- true.p.srv.Nh) * true.p.rnb.Nh,#[5]in uid and rainbow only
                            true.p.rnb.Nh * (1 - true.p.srv.Nh) * (1 - true.p.uid.Nh),#[6]in only rainbow
                            true.p.rnb.Nh * true.p.srv.Nh * (1- true.p.uid.Nh),#[7]in rainbow and survey only
-                           (1- true.p.srv.Nh) * (1- true.p.uid.Nh) * (1 - true.p.rnb.Nh))#[8]in none
+                           (1- true.p.srv.Nh) * (1- true.p.uid.Nh) * (1 - true.p.rnb.Nh)))#[8]in none
   
   #store simulated Nhlangano data
   #note that N.uid.rnb.Nh (excluding survey) is unknown in the context of the data
