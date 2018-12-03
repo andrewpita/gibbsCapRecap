@@ -37,7 +37,7 @@ sim_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
   Nh.sample = rmultinom(1, size = true.N.Nh, prob = 
                          c(true.p.srv.Nh * (1 - true.p.uid.Nh) * (1 - true.p.rnb.Nh),#[1] in survey only
                            true.p.srv.Nh * true.p.uid.Nh * (1 - true.p.rnb.Nh), #[2]in survey and uid only
-                           true.p.srv.Nh * true.p.uid.Nh * true.p.rnb.Nh), #[3]in all three
+                           true.p.srv.Nh * true.p.uid.Nh * true.p.rnb.Nh, #[3]in all three
                            true.p.uid.Nh * (1- true.p.srv.Nh) * (1 - true.p.rnb.Nh),#[4]in only uid
                            true.p.uid.Nh * (1- true.p.srv.Nh) * true.p.rnb.Nh,#[5]in uid and rainbow only
                            true.p.rnb.Nh * (1 - true.p.srv.Nh) * (1 - true.p.uid.Nh),#[6]in only rainbow
