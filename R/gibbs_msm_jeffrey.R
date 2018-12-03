@@ -96,6 +96,17 @@ gibbs_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
                                              (p.cpn.ME/(1-p.cpn.ME))/(p.cpn.MM/(1-p.cpn.MM)))
     N.cpn.MM=N.cpn.Co-N.cpn.ME
     
+    #even though these aren't used in the simulation we want to 
+    #see how well this model can recover them
+    
+    phi.PP = N.PP/P.PP
+    
+    phi.Nh = N.Nh/P.Nh
+    
+    phi.ME = N.ME/P.ME
+    
+    phi.MM = N.MM/P.MM
+    
     for(par in parnames) M[i,par]=get(par)
     
     if((i %% 1)==200) print(i)    

@@ -13,7 +13,7 @@
 #' @export
 
 density_plot=function(col,Mlist){
-
+  
   colname=str_replace_all(col,"[.]","_")
   imagename=paste0("results/densityplots/",colname,".png")
   png(imagename)
