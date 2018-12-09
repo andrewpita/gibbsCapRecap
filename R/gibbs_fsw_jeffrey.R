@@ -22,7 +22,7 @@
 #but my hope is that the documentation is good enough that someone could 
 #easily adapt the model to their own purposes.
 
-gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionPropPriors) {
+gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
   
   print(seed)
   M=matrix(0,N,length(parnames)) ## stores MCMC samples 
