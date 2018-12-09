@@ -20,13 +20,13 @@ location_sim = function(nListings, size, probs) {
     
     prob1 = probs[1]
     prob2 = probs[2]
-
+    
     samp = rmultinom(1, size = size, prob = 
                        c(prob1 * (1 - prob2),#[1] in first listing
                          prob1 * prob2,#[2] in both
                          (1 - prob1) * prob2,#[3] in second only
                          (1- prob1) * (1 - prob2)#[4] in neither
-                         ))
+                       ))
     N.both = samp[2]
     N.1 = samp[1] + N.both
     N.2 = samp[2] + samp[3]
@@ -49,7 +49,7 @@ location_sim = function(nListings, size, probs) {
                          (1 - prob1) * (1 - prob2) * prob3,#[6] in only 3
                          prob1 * (1 - prob2) * prob3,#[7] in 1 and 3 only
                          (1 - prob1) * (1 -  prob2) * (1 -  prob3)#[8] in none
-                         ))
+                       ))
     
     N.1.2 = samp[2] + samp[3]
     N.1.3 = samp[3] + samp[7]
@@ -58,6 +58,8 @@ location_sim = function(nListings, size, probs) {
     N.3 = samp[3] + samp[5] + samp[6] + samp[7]
     r = as.numeric(size - samp[8])
     r.list = list(N.1, N.2, N.3, N.1.2, N.1.3, r)
+    return(r.list)
+    
   } else {
     
     print("nListings must be equal to 2 or 3")
