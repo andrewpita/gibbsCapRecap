@@ -31,8 +31,8 @@ gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
   ### constants for beta posteriors ###
   #inclusionProbPriors is meant to be specified in a configuration
   #file created by the user at the start of the analysis.
-  a.srv=a.uid=a.rnb=a.cpn=inclusionProbPriors
-  b.srv=b.uid=b.rnb=b.cpn=inclusionProbPriors
+  a.srv=a.uid=a.flas=inclusionProbPriors
+  b.srv=b.uid=b.flas=inclusionProbPriors
   
   #set the inclusion probability parameters arbitrarily equal
   #to 0.1
