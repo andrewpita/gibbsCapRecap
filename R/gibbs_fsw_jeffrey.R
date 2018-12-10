@@ -108,6 +108,16 @@ gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
     
     N.flas.MM = N.flas.Co - N.flas.ME
     
+    phi.Lv = N.Lv/P.Lv
+    
+    phi.PP = N.PP/P.PP
+    
+    phi.Nh = N.Nh/P.Nh
+    
+    phi.ME = N.ME/P.ME
+    
+    phi.MM = N.MM/P.MM
+    
     #store this iterations values for all parameters
     for(par in parnames) M[i,par]=get(par)
     
