@@ -118,7 +118,7 @@ gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
     N.flas.MM = N.flas.Co - N.flas.ME
     
     #### Metropolis update for a.phi and b.phi ####
-    abphi=betahyperMH(a.phi,b.phi,atune,btune,c(phi.PP,phi.Nh,phi.ME,phi.MM))
+    abphi=betahyperMH(a.phi,b.phi,atune,btune,c(phi.Lv,phi.PP,phi.Nh,phi.ME,phi.MM))
     #print(abphi)
     a.phi=abphi[1]
     b.phi=abphi[2]
