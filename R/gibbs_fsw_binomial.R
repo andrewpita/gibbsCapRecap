@@ -9,6 +9,7 @@
 #' @param inclusionProbPriors priors for the inclusion probabilities of participating in each listing. should be present in a configureation file. 
 #' @param atune Tuning parameter for the metropolis-hastings update of hyperparameters on phis
 #' @param btune Other tuning parameter for the metropolis-hastings update
+#' @param constraint Value that represents the lower bound "known" number of flas participants in Mbabane
 #' @param x log of a.phi/(a.phi+ b.phi)
 #' @param y log of (a.phi +b.phi)
 #' @param phivec vector of current values of phi
@@ -25,7 +26,8 @@
 
 
 gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
-                              btune = 1, inclusionProbPriors) {
+                              btune = 1, inclusionProbPriors,
+                              constraint) {
   
   print(seed)
   
@@ -57,21 +59,21 @@ gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
     
     #### updating Lavumisa ####
     x=phi.Lv*(1-p.srv.Lv)*(1-p.uid.Lv)
-    N.Lv=r.Lv+rbinom(1,P.Lv-r.Lv,x/(1+x))
+    N.Lv=r.Lv+rbinom(1,P.Lv-r.Lv,x/(1-phi.Lv+x))
     p.srv.Lv=rbeta(1,a.srv+N.srv.Lv,b.srv+N.Lv-N.srv.Lv)
     p.uid.Lv=rbeta(1,a.uid+N.uid.Lv,b.uid+N.Lv-N.uid.Lv)
     phi.Lv=rbeta(1,a.phi+N.Lv,b.phi+P.Lv-N.Lv)
     
     #### updating Piggs Peak ####
     x=phi.PP*(1-p.srv.PP)*(1-p.uid.PP)
-    N.PP=r.PP+rbinom(1,P.PP-r.PP,x/(1+x))
+    N.PP=r.PP+rbinom(1,P.PP-r.PP,x/(1-phi.PP+x))
     p.srv.PP=rbeta(1,a.srv+N.srv.PP,b.srv+N.PP-N.srv.PP)
     p.uid.PP=rbeta(1,a.uid+N.uid.PP,b.uid+N.PP-N.uid.PP)
     phi.PP=rbeta(1,a.phi+N.PP,b.phi+P.PP-N.PP)
     
     #### updating Nhlangano ####
     x=phi.Nh*(1-p.srv.Nh)*(1-p.uid.Nh)
-    N.Nh=r.Nh+rbinom(1,P.Nh-r.Nh,x/(1+x))
+    N.Nh=r.Nh+rbinom(1,P.Nh-r.Nh,x/(1-phi.Nh+x))
     p.srv.Nh=rbeta(1,a.srv+N.srv.Nh,b.srv+N.Nh-N.srv.Nh)
     p.uid.Nh=rbeta(1,a.uid+N.uid.Nh,b.uid+N.Nh-N.uid.Nh)
     phi.Nh=rbeta(1,a.phi+N.Nh,b.phi+P.Nh-N.Nh)
@@ -81,7 +83,7 @@ gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
                  N.flas.ME-N.srv.flas.ME)
     r.ME=N.srv.ME+N.uid.ME+N.flas.ME-N.srv.uid.ME-N.srv.flas.ME - ov.ME
     x=phi.ME*(1-p.srv.ME)*(1-p.uid.ME)*(1-p.flas.ME)
-    N.ME=r.ME+rbinom(1,P.ME-r.ME,x/(1+x))
+    N.ME=r.ME+rbinom(1,P.ME-r.ME,x/(1-phi.ME+x))
     p.srv.ME=rbeta(1,a.srv+N.srv.ME,b.srv+N.ME-N.srv.ME)
     p.uid.ME=rbeta(1,a.uid+N.uid.ME,b.uid+N.ME-N.uid.ME)
     p.flas.ME=rbeta(1,a.flas+N.flas.ME,b.flas+N.ME-N.flas.ME)
@@ -93,7 +95,7 @@ gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
                  N.flas.MM-N.srv.flas.MM)
     r.MM=N.srv.MM+N.uid.MM+N.flas.MM-N.srv.uid.MM-N.srv.flas.MM - ov.MM
     x=phi.MM*(1-p.srv.MM)*(1-p.uid.MM)*(1-p.flas.MM)
-    N.MM=r.MM+rbinom(1,P.MM-r.MM,x/(1+x))
+    N.MM=r.MM+rbinom(1,P.MM-r.MM,x/(1-phi.MM+x))
     p.srv.MM=rbeta(1,a.srv+N.srv.MM,b.srv+N.MM-N.srv.MM)
     p.uid.MM=rbeta(1,a.uid+N.uid.MM,b.uid+N.MM-N.uid.MM)
     p.flas.MM=rbeta(1,a.flas+N.flas.MM,b.flas+N.MM-N.flas.MM)
@@ -103,14 +105,14 @@ gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
     
     temp = 0
     
-    while (temp < 70) {
+    while (temp < constraint) {
       
       N.flas.ME = N.srv.flas.ME + ov.ME + 
         
         rFNCHypergeo(1, N.ME - N.srv.ME - N.uid.ME + N.srv.uid.ME,
                      N.MM - N.srv.MM - N.uid.MM + N.srv.uid.MM,
                      N.flas.Co - N.srv.flas.ME - ov.ME - N.srv.flas.MM - ov.MM,
-                     (p.flas.ME)/(1-p.flas.ME)/(p.flas.MM)/(1-p.flas.MM))
+                     ((p.flas.ME)/(1-p.flas.ME))/((p.flas.MM)/(1-p.flas.MM)))
       temp = N.flas.ME
       
     }
@@ -125,7 +127,7 @@ gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
     
     for(par in parnames) M[i,par]=get(par)
     
-    if((i %% 1)==200) print(i)
+    if((i %% 500)==0) print(i)
     
     
   }

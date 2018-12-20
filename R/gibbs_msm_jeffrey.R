@@ -109,7 +109,7 @@ gibbs_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
     
     for(par in parnames) M[i,par]=get(par)
     
-    if((i %% 1)==200) print(i)    
+    if((i %% 500)==0) print(i)    
     #print(i)
     
   }

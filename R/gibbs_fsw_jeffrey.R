@@ -7,7 +7,7 @@
 #' @param seed a seed
 #' @param N number of iterations for the gibbs sampler. Default is 10,000
 #' @param inclusionProbPriors priors for the inclusion probabilities of participating in each listing. should be present in a configureation file. 
-#' 
+#' @param constraint Value that represents the lower bound "known" number of flas participants in Mbabane
 #' @return a numeric matrix
 #' 
 #' @importFrom BiasedUrn rFNCHypergeo
@@ -22,7 +22,8 @@
 #but my hope is that the documentation is good enough that someone could 
 #easily adapt the model to their own purposes.
 
-gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
+gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionProbPriors,
+                             constraint) {
   
   print(seed)
   M=matrix(0,N,length(parnames)) ## stores MCMC samples 
@@ -96,12 +97,12 @@ gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
     
     temp = 0
     
-    while (temp < 70) {
+    while (temp < constraint) {
       
       N.flas.ME = N.srv.flas.ME + ov.ME + rFNCHypergeo(1, N.ME - N.srv.ME - N.uid.ME + N.srv.uid.ME,
                                                        N.MM - N.srv.MM - N.uid.MM + N.srv.uid.MM,
                                                        N.flas.Co - N.srv.flas.ME - ov.ME - N.srv.flas.MM - ov.MM,
-                                                       (p.flas.ME)/(1-p.flas.ME)/(p.flas.MM)/(1-p.flas.MM))
+                                                       ((p.flas.ME)/(1-p.flas.ME))/((p.flas.MM)/(1-p.flas.MM)))
       temp = N.flas.ME
       
     }
@@ -121,7 +122,7 @@ gibbs_fsw_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
     #store this iterations values for all parameters
     for(par in parnames) M[i,par]=get(par)
     
-    if((i %% 1)==200) print(i)
+    if((i %% 500)==0) print(i)
     
   }
   

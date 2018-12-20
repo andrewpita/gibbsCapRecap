@@ -55,7 +55,7 @@ gibbs_msm_binomial = function(seed, N = 10000, atune = 0.25,
     
     #### updating Piggs Peak ####
     x=phi.PP*(1-p.srv.PP)*(1-p.uid.PP)
-    N.PP=r.PP+rbinom(1,P.PP-r.PP,x/(1+x))
+    N.PP=r.PP+rbinom(1,P.PP-r.PP,x/(1-phi.PP+x))
     p.srv.PP=rbeta(1,a.srv+N.srv.PP,b.srv+N.PP-N.srv.PP)
     p.uid.PP=rbeta(1,a.uid+N.uid.PP,b.uid+N.PP-N.uid.PP)
     phi.PP=rbeta(1,a.phi+N.PP,b.phi+P.PP-N.PP)
@@ -64,7 +64,7 @@ gibbs_msm_binomial = function(seed, N = 10000, atune = 0.25,
     r.Nh=N.srv.Nh+N.uid.Nh+N.rnb.Nh-N.srv.uid.Nh-N.srv.rnb.Nh - 
       rhyper(1,N.uid.Nh-N.srv.uid.Nh,N.Nh-N.srv.Nh-N.uid.Nh+N.srv.uid.Nh,N.rnb.Nh-N.srv.rnb.Nh)
     x=phi.Nh*(1-p.srv.Nh)*(1-p.uid.Nh)*(1-p.rnb.Nh)
-    N.Nh=r.Nh+rbinom(1,P.Nh-r.Nh,x/(1+x))
+    N.Nh=r.Nh+rbinom(1,P.Nh-r.Nh,x/(1-phi.Nh+x))
     p.srv.Nh=rbeta(1,a.srv+N.srv.Nh,b.srv+N.Nh-N.srv.Nh)
     p.uid.Nh=rbeta(1,a.uid+N.uid.Nh,b.uid+N.Nh-N.uid.Nh)
     p.rnb.Nh=rbeta(1,a.rnb+N.rnb.Nh,b.rnb+N.Nh-N.rnb.Nh)
@@ -74,7 +74,7 @@ gibbs_msm_binomial = function(seed, N = 10000, atune = 0.25,
     ov.ME=rhyper(1,N.uid.ME-N.srv.uid.ME,N.ME-N.srv.ME-N.uid.ME+N.srv.uid.ME,N.cpn.ME-N.srv.cpn.ME)
     r.ME=N.srv.ME+N.uid.ME+N.cpn.ME-N.srv.uid.ME-N.srv.cpn.ME - ov.ME
     x=phi.ME*(1-p.srv.ME)*(1-p.uid.ME)*(1-p.cpn.ME)
-    N.ME=r.ME+rbinom(1,P.ME-r.ME,x/(1+x))
+    N.ME=r.ME+rbinom(1,P.ME-r.ME,x/(1-phi.ME+x))
     p.srv.ME=rbeta(1,a.srv+N.srv.ME,b.srv+N.ME-N.srv.ME)
     p.uid.ME=rbeta(1,a.uid+N.uid.ME,b.uid+N.ME-N.uid.ME)
     p.cpn.ME=rbeta(1,a.cpn+N.cpn.ME,b.cpn+N.ME-N.cpn.ME)
@@ -84,7 +84,7 @@ gibbs_msm_binomial = function(seed, N = 10000, atune = 0.25,
     ov.MM=rhyper(1,N.uid.MM-N.srv.uid.MM,N.MM-N.srv.MM-N.uid.MM+N.srv.uid.MM,N.cpn.MM-N.srv.cpn.MM)
     r.MM=N.srv.MM+N.uid.MM+N.cpn.MM-N.srv.uid.MM-N.srv.cpn.MM - ov.MM
     x=phi.MM*(1-p.srv.MM)*(1-p.uid.MM)*(1-p.cpn.MM)
-    N.MM=r.MM+rbinom(1,P.MM-r.MM,x/(1+x))
+    N.MM=r.MM+rbinom(1,P.MM-r.MM,x/(1-phi.MM+x))
     p.srv.MM=rbeta(1,a.srv+N.srv.MM,b.srv+N.MM-N.srv.MM)
     p.uid.MM=rbeta(1,a.uid+N.uid.MM,b.uid+N.MM-N.uid.MM)
     p.cpn.MM=rbeta(1,a.cpn+N.cpn.MM,b.cpn+N.MM-N.cpn.MM)
@@ -104,8 +104,8 @@ gibbs_msm_binomial = function(seed, N = 10000, atune = 0.25,
     
     for(par in parnames) M[i,par]=get(par)
     
-    if((i %% 1)==200) print(i)    
-    #print(i)
+    if((i %% 500)==0) print(i)    
+
     
   }
   
