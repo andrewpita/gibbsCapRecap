@@ -6,6 +6,8 @@
 #' @param seed a seed
 #' @param N number of iterations for the gibbs sampler, default is 10,000
 #' @param inclusionProbPriors priors for the inclusion probabilities of participating in each listing. should be present in a configureation file. 
+#' @param gibbs.list list containing all the location listing data
+#' @param parnames vector containing parameter names to be estimated 
 #' 
 #' @return a numeric matrix
 #' 
@@ -22,7 +24,36 @@
 #but my hope is that the documentation is good enough that someone could 
 #easily adapt the model to their own purposes. 
 
-gibbs_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors) {
+gibbs_msm_jeffrey = function(seed, N = 10000, inclusionProbPriors, gibbs.list, parnames) {
+  
+  P.PP = gibbs.list[[1]][1]
+  N.srv.PP = gibbs.list[[1]][2]
+  N.uid.PP = gibbs.list[[1]][3]
+  N.srv.uid.PP = gibbs.list[[1]][4]
+  r.PP = N.srv.PP + N.uid.PP - N.srv.uid.PP
+  
+  P.Nh = gibbs.list[[2]][1]
+  N.srv.Nh = gibbs.list[[2]][2]
+  N.uid.Nh = gibbs.list[[2]][3]
+  N.rnb.Nh = gibbs.list[[2]][4]
+  N.srv.uid.Nh = gibbs.list[[2]][5]
+  N.srv.rnb.Nh = gibbs.list[[2]][6]
+  
+  P.ME = gibbs.list[[3]][1]
+  N.srv.ME = gibbs.list[[3]][2]
+  N.uid.ME = gibbs.list[[3]][3]
+  N.srv.uid.ME = gibbs.list[[3]][4]
+  N.srv.cpn.ME = gibbs.list[[3]][5]
+  
+  P.MM = gibbs.list[[4]][1]
+  N.srv.MM = gibbs.list[[4]][2]
+  N.uid.MM = gibbs.list[[4]][3]
+  N.srv.uid.MM = gibbs.list[[4]][4]
+  N.srv.cpn.MM = gibbs.list[[4]][5]
+  
+  N.cpn.Co = gibbs.list[[5]]
+  
+  probpars=parnames[which(startsWith(parnames,"p"))]
   
   print(seed)
   M=matrix(0,N,length(parnames)) ## stores MCMC samples 

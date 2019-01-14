@@ -5,7 +5,8 @@
 \title{Runs a gibbs sampler chain with Jeffreys prior on N to estimate our model parameters
 for the FSW data}
 \usage{
-gibbs_fsw_jeffrey(seed, N = 10000, inclusionPropPriors)
+gibbs_fsw_jeffrey(seed, N = 10000, inclusionProbPriors, constraint,
+  gibbs.list, parnames)
 }
 \arguments{
 \item{seed}{a seed}
@@ -13,6 +14,12 @@ gibbs_fsw_jeffrey(seed, N = 10000, inclusionPropPriors)
 \item{N}{number of iterations for the gibbs sampler. Default is 10,000}
 
 \item{inclusionProbPriors}{priors for the inclusion probabilities of participating in each listing. should be present in a configureation file.}
+
+\item{constraint}{Value that represents the lower bound "known" number of flas participants in Mbabane}
+
+\item{gibbs.list}{list containing all the location listing data}
+
+\item{parnames}{vector containing parameter names to be estimated}
 }
 \value{
 a numeric matrix

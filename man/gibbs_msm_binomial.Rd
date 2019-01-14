@@ -5,7 +5,7 @@
 \title{Runs a gibbs sampler chain with a Binomial prior on N to estimate our model parameters}
 \usage{
 gibbs_msm_binomial(seed, N = 10000, atune = 0.25, btune = 1,
-  inclusionProbPriors)
+  inclusionProbPriors, gibbs.list, parnames)
 }
 \arguments{
 \item{seed}{a seed}
@@ -17,6 +17,10 @@ gibbs_msm_binomial(seed, N = 10000, atune = 0.25, btune = 1,
 \item{btune}{Other tuning parameter for the metropolis-hastings update}
 
 \item{inclusionProbPriors}{priors for the inclusion probabilities of participating in each listing. should be present in a configureation file.}
+
+\item{gibbs.list}{list containing all the location listing data}
+
+\item{parnames}{vector containing parameter names to be estimated}
 
 \item{x}{log of a.phi/(a.phi+ b.phi)}
 

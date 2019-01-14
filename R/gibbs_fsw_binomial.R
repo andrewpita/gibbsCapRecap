@@ -13,6 +13,8 @@
 #' @param x log of a.phi/(a.phi+ b.phi)
 #' @param y log of (a.phi +b.phi)
 #' @param phivec vector of current values of phi
+#' @param gibbs.list list containing all the location listing data
+#' @param parnames vector containing parameter names to be estimated 
 #' 
 #' @return a numeric matrix
 #' 
@@ -27,7 +29,41 @@
 
 gibbs_fsw_binomial = function(seed, N = 10000, atune = 0.25,
                               btune = 1, inclusionProbPriors,
-                              constraint) {
+                              constraint, gibbs.list, parnames) {
+  
+  P.PP = gibbs.list[[1]][1]
+  N.srv.PP = gibbs.list[[1]][2]
+  N.uid.PP = gibbs.list[[1]][3]
+  N.srv.uid.PP = gibbs.list[[1]][4]
+  r.PP = N.srv.PP + N.uid.PP - N.srv.uid.PP
+  
+  P.Lv = gibbs.list[[2]][1]
+  N.srv.Lv = gibbs.list[[2]][2]
+  N.uid.Lv = gibbs.list[[2]][3]
+  N.srv.uid.Lv = gibbs.list[[2]][4]
+  r.Lv = N.srv.Lv + N.uid.Lv - N.srv.uid.Lv
+  
+  P.Nh = gibbs.list[[3]][1]
+  N.srv.Nh = gibbs.list[[3]][2]
+  N.uid.Nh = gibbs.list[[3]][3]
+  N.srv.uid.Nh = gibbs.list[[3]][4]
+  r.Nh = N.srv.Nh + N.uid.Nh - N.srv.uid.Nh
+  
+  P.ME = gibbs.list[[4]][1]
+  N.srv.ME = gibbs.list[[4]][2]
+  N.uid.ME = gibbs.list[[4]][3]
+  N.srv.uid.ME = gibbs.list[[4]][4]
+  N.srv.flas.ME = gibbs.list[[4]][5]
+  
+  P.MM = gibbs.list[[5]][1]
+  N.srv.MM = gibbs.list[[5]][2]
+  N.uid.MM = gibbs.list[[5]][3]
+  N.srv.uid.MM = gibbs.list[[5]][4]
+  N.srv.flas.MM = gibbs.list[[5]][5]
+  
+  N.flas.Co = gibbs.list[[6]]
+  
+  probpars=parnames[which(startsWith(parnames,"p"))]
   
   print(seed)
   

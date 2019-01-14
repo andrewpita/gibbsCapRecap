@@ -4,7 +4,7 @@
 \alias{gibbs_msm_jeffrey}
 \title{Runs a gibbs sampler chain with Jeffreys prior on N to estimate our model parameters}
 \usage{
-gibbs_msm_jeffrey(seed, N = 10000, inclusionProbPriors)
+gibbs_msm_jeffrey(seed, N = 10000, inclusionProbPriors, gibbs.list, parnames)
 }
 \arguments{
 \item{seed}{a seed}
@@ -12,6 +12,10 @@ gibbs_msm_jeffrey(seed, N = 10000, inclusionProbPriors)
 \item{N}{number of iterations for the gibbs sampler, default is 10,000}
 
 \item{inclusionProbPriors}{priors for the inclusion probabilities of participating in each listing. should be present in a configureation file.}
+
+\item{gibbs.list}{list containing all the location listing data}
+
+\item{parnames}{vector containing parameter names to be estimated}
 }
 \value{
 a numeric matrix

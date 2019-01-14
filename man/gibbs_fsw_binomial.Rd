@@ -6,7 +6,7 @@
 for FSW data}
 \usage{
 gibbs_fsw_binomial(seed, N = 10000, atune = 0.25, btune = 1,
-  inclusionProbPriors)
+  inclusionProbPriors, constraint, gibbs.list, parnames)
 }
 \arguments{
 \item{seed}{a seed}
@@ -18,6 +18,12 @@ gibbs_fsw_binomial(seed, N = 10000, atune = 0.25, btune = 1,
 \item{btune}{Other tuning parameter for the metropolis-hastings update}
 
 \item{inclusionProbPriors}{priors for the inclusion probabilities of participating in each listing. should be present in a configureation file.}
+
+\item{constraint}{Value that represents the lower bound "known" number of flas participants in Mbabane}
+
+\item{gibbs.list}{list containing all the location listing data}
+
+\item{parnames}{vector containing parameter names to be estimated}
 
 \item{x}{log of a.phi/(a.phi+ b.phi)}
 
