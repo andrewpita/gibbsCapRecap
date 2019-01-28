@@ -17,5 +17,7 @@ Imports:
 	stats,
 	stringr,
 	hash,
-	magrittr
+	magrittr,
+	ggplot2,
+	ggforce
 RoxygenNote: 6.0.1

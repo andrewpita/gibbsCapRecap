@@ -1,8 +1,7 @@
 #' Runs a gibbs sampler chain with a Binomial prior on N to estimate our model parameters
 #' for FSW data
 #' 
-#' @description Requires that parameters be declared globally, and note they are 
-#' @description hardcoded for this analysis
+#' @description Runs a gibbs chain with a binomial prior with listing data input 
 #' 
 #' @param seed a seed
 #' @param N number of iterations for the gibbs sampler. Default 10,000

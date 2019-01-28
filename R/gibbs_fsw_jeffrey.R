@@ -1,8 +1,7 @@
 #' Runs a gibbs sampler chain with Jeffreys prior on N to estimate our model parameters
 #' for the FSW data
 #' 
-#' @description Requires that parameters be declared globally, and note they are 
-#' @description hardcoded for this analysis
+#' @description Runs a gibbs chain with a jeffrey prior with listing data input
 #' 
 #' @param seed a seed
 #' @param N number of iterations for the gibbs sampler. Default is 10,000

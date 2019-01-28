@@ -25,7 +25,5 @@ gibbs_fsw_jeffrey(seed, N = 10000, inclusionProbPriors, constraint,
 a numeric matrix
 }
 \description{
-Requires that parameters be declared globally, and note they are
-
-hardcoded for this analysis
+Runs a gibbs chain with a jeffrey prior with listing data input
 }

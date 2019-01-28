@@ -35,7 +35,5 @@ gibbs_fsw_binomial(seed, N = 10000, atune = 0.25, btune = 1,
 a numeric matrix
 }
 \description{
-Requires that parameters be declared globally, and note they are
-
-hardcoded for this analysis
+Runs a gibbs chain with a binomial prior with listing data input
 }
