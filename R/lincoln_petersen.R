@@ -13,6 +13,9 @@
 
 lincoln_petersen = function(n1, n2, m) {
   
+  n1 = as.numeric(n1)
+  n2 = as.numeric(n2)
+  m = as.numeric(m)
   #list to contain the estimate, variance, and CI
   return.list = list()
   #Lincoln-Petersen estimator
