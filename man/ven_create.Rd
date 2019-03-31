@@ -15,7 +15,7 @@ ven_create(nListings, vecCounts, listNames, locName, groupColors)
 
 \item{locName}{the location name for this Venn Diagram}
 
-\item{groupColors}{color of the circle for each listing}
+\item{groupColors}{a vector of the form c(listing name = color)}
 }
 \value{
 a ggplot object
