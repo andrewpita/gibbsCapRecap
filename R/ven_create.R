@@ -7,7 +7,7 @@
 #' @param vecCounts a vector that contains the known number of participants for each partition of the Venn diagram
 #' @param listNames a vector of the listing names for the legend
 #' @param locName the location name for this Venn Diagram
-#' @param groupColors color of the circle for each listing
+#' @param groupColors a vector of the form c(listing name = color)
 #' 
 #' @return a ggplot object
 #' 
